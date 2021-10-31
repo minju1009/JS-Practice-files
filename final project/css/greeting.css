@@ -1,0 +1,18 @@
+#login-input input:first-child {
+  font-size: xx-large;
+  margin-bottom: 1px solid 0.2;
+  border: 0px;
+  justify-content: center;
+}
+
+#login-input input:last-child {
+  font-size: small;
+  border-style: hidden;
+  border-radius: 5px;
+  padding: 10px 20px;
+  justify-content: center;
+}
+
+#login-input {
+  display: flex;
+}
