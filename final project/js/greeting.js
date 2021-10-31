@@ -5,6 +5,7 @@ const greeting = document.querySelector("#greeting");
 
 function onLoginSubmit(event){
     event.preventDefault();
+    loginForm.classList.add("hidden");
     const username = loginInput.value;
     localStorage.setItem("username",username);
     paintGreeting(username);
@@ -16,15 +17,12 @@ function paintGreeting(username) {
     const hour = today.getHours ();
     if (hour < 12) {
         greeting.innerText = `Good morning ${username}`;
-        greeting.classList.remove("hidden");
     }else if (hour < 18) {
         greeting.innerText = `Good afternoon ${username}`;
-        greeting.classList.remove("hidden");
     } else {
         greeting.innerText = `Good night ${username}`;
-        greeting.classList.remove("hidden");
     }
-    
+    greeting.classList.remove("hidden");
 }
 
 const savedUsername = localStorage.getItem("username");
