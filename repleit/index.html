@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice JS</title>
+</head>
+<body>
+
+<script>
+
+// Array methods
+    function divideArrayInHalf(array) {
+        let result = [];
+        for(i=4; i>=0 ; i--){
+            if(array[i] <= 10){
+                result.unshift(array[i]);
+            }else if(array[i] > 10){
+                result.push(array[i]);
+            }
+        }
+        console.log(result);
+    }
+
+divideArrayInHalf([1, 20, 10, 5, 100]);
+
+
+// String methods
+let info = "JavaScript는 프로래밍 언어이다.";
+let firstChar = info.indexOf("프로래밍");
+console.log(info, firstChar);
+
+if(firstChar !== -1){
+    console.log(info.slice(0,firstChar)+"프로그래밍"+info.slice(firstChar+4));
+}
+
+function sliceCityFromAddress(address) {
+  const city = address.indexOf('시');
+  const province = address.indexOf('도');
+  console.log((address.slice(0, province+1) + " "+ address.slice(city+2)));
+}
+
+const address = "전라북도 전주시 완산구 안행 6길 7";
+sliceCityFromAddress(address);
+
+// String to numbers
+console.clear();
+console.log(parseInt("1.901"));
+console.log(parseFloat("1.901"));
+console.log(Number("1.901"));
+console.log(parseInt("200") + 1);
+
+// numbers to String
+var numberAsNumber = 1234; 
+var numberAsString = numberAsNumber.toString();
+
+console.log(numberAsNumber, typeof numberAsNumber);
+console.log(numberAsString, typeof numberAsString);
+
+function nationalPensionRemainingYearCount(age_string) {
+    const ageNum = Number(age_string);
+    console.log(typeof(ageNum));
+
+
+}
+
+nationalPensionRemainingYearCount("35");
+</script>    
+</body>
+</html>
