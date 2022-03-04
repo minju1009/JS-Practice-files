@@ -8,8 +8,18 @@
 </head>
 <body>
 
-<script>
+<h1 class="hello"></h1>
 
+<div class="login-container">
+    <input type="password" id="password" placeholder="비밀번호" />
+    <input type="password" id="re-password" placeholder="비밀번호 확인" />
+    <button class="login-btn">로그인</button>
+    <p class="alert"></p>
+    <p>key code: <span id="code"></span></p>
+  </div>
+
+<script>
+{
 // Array methods
     function divideArrayInHalf(array) {
         let result = [];
@@ -60,12 +70,265 @@ console.log(numberAsString, typeof numberAsString);
 
 function nationalPensionRemainingYearCount(age_string) {
     const ageNum = Number(age_string);
-    console.log(typeof(ageNum));
+    console.log(`앞으로 ${60-ageNum}년 남으셨습니다`);
+}
+
+nationalPensionRemainingYearCount("35");
+
+// 날짜와 시간
+const rightNow = new Date();
+console.log(rightNow);
+console.log(rightNow.getFullYear());
+console.log(rightNow.getDay());
+console.log(rightNow.getMonth()+1);
+console.log(rightNow.getDate());
+console.log(rightNow.getHours());
+console.log(rightNow.getMinutes());
+console.log(rightNow.getSeconds());
+
+console.log(rightNow.getTime());
+
+function getWesternAge(birthday) {
+  const birthYear = birthday.getFullYear();
+  const currentYear = new Date().getFullYear();
+  console.log(currentYear - birthYear);
+}
+
+function getWesternAge1(birthday) {
+  const birthYear = birthday.getFullYear();
+  const birthMonth = birthday.getMonth();
+  const birthDate = birthday.getDate();
+  const rightNow = new Date();
+  const currentYear = rightNow.getFullYear();
+  const currentMonth = rightNow.getMonth();
+  const currentDate = rightNow.getDate();
+  if(currentYear - birthYear <=0){
+    return 0;
+  }else if(currentYear - birthYear > 0 && currentMonth-birthMonth>=0 && currentDate-birthDate>=0){
+    return currentYear - birthYear}
+    else{currentYear-birthYear-1};
+}
+
+console.clear();
+const day1 = new Date(1991, 10, 9);
+const day2 = new Date(1992, 10, 9);
+console.log(day1, day2);
+console.log(day1.getTime(), day2.getTime(), day2.getTime()-day1.getTime());
+
+const day3 = new Date(1992, 10, 9);
+const day4 = new Date(1993, 10, 9);
+console.log(day3, day4);
+console.log(day3.getTime(), day4.getTime(), day4.getTime()-day3.getTime());
+
+//최소(min), 최대값(max)을 받아 그 사이의 랜덤수를 return 하는 함수를 구현해주세요.
+console.clear();
+function getRandomNumber (min, max) {
+  console.log(Math.ceil(Math.random() * (max-min)));
+}
+
+getRandomNumber(4,7);
+
+// making array to object function
+console.clear();
+
+function getData(salesArr,reviewArr,likeArr){
+    const object = new Object();
+    object.sumAmout = returnSum(salesArr);
+    object.sumReview = returnSum(reviewArr);
+    object.sumLike = returnSum(likeArr);
+    console.log(object);
+};
+  function returnSum(arr){
+      let sum = 0;
+      arr.forEach(element => sum = sum + element[1]);
+      return sum;
+    }
+
+  const arr = [[0,2], [0,5], [2,7]];
+
+  getData(arr,arr,arr);
+
+  console.clear();
+
+  const hey = new Object();
+  console.log(hey);
+  hey.hello = returnSum(arr);
+  hey.why = 4;
+  console.log(hey);
+
+
+  // finding some value from 중첩된 객체
+  let myProfile = {
+  name: '김개발',
+  address: {
+    email: 'geabal@gmail.com',
+    home: '위워크'
+  },
+  'my favorite': {
+    food: [{
+      name: '샐러드',
+      price: 3500
+    }, {
+      name: '삼겹살',
+      price: 15000
+    }],
+    hobby: ['축구']
+  }
+}
+
+function getAnswer(myProfile){
+    console.log(myProfile['my favorite'].food[0]['name']);
+}
+
+getAnswer(myProfile);
+
+//template literal and some more string methods
+const handleEdit = (nickname, interests) => {
+  const object = {
+    nickname: nickname,
+    interests: interests.split(','),
+    bio : `제 닉네임은 ${nickname}입니다. 취미는 ${interests}입니다.`
+  }
+  console.log(object);
+}
+
+handleEdit("뚜비", "방탈출,테니스,멍 때리기");
+
+// foreach
+let idxOfC = -1;
+let arrr = ['a', 'b', 'c', 'd'];
+
+arrr.forEach((el, idx) => {
+  if (el === 'c') {
+    idxOfC = idx;
+    console.log(idxOfC);
+  }
+});
+
+
+
+// Array.map
+console.clear();
+
+const nums = [100, 9, 30, 7];
+const moreThan100 = nums.map((e) => (e>=100)? true : false);
+console.log(moreThan100);
+
+const dates = ['2019-03-21', '2019-04-21', '2019-05-21'];
+const formatDate = dates.map(e => `${e.slice(0,4)}년 ${e.slice(5,7)}월 ${e.slice(8)}일`)
+console.log(formatDate);
+
+
+// Object 내장 객체 
+// const obj = {
+//   name: 'melon',
+//   weight: 4350,
+//   price: 16500,
+//   isFresh: true
+// }
+
+// console.log(Object.keys(obj)) // ['name', 'weight', 'price', 'isFresh']
+// console.log(Object.keys(obj)[1]);
+
+// console.log(Object.values(obj));
+// console.log(Object.entries(obj)[1][1]);
+
+// for..in..
+const obj = {
+  name: 'melon',
+  weight: 4350,
+  price: 16500,
+  isFresh: true
+}
+
+for (let key in obj) {
+  const value = obj[key]
+
+  console.log(key)
+  console.log(value)    
+}
+
+}
+
+// object and array
+console.clear();
+
+const scores = {
+  '생활속의회계': 'C',
+  '논리적글쓰기': 'B',
+  '독일문화의이해': 'B+',
+  '기초수학': 'D+',
+  '영어회화': 'C+',
+  '인지발달심리학': 'A+',
+}
+
+const requiredClasses = ['영어회화', '기초수학', '공학수학', '컴퓨터과학개론'];
+
+
+const getExamResult = (scores, requiredClasses) => {
+    Object.keys(scores).forEach(key => { 
+        if(scores[key] === 'A+'){
+            scores[key] =4.5;
+        }else if(scores[key] === 'A'){
+            scores[key] =4;
+        }else if(scores[key] === 'B+'){
+            scores[key] = 3.5;
+        }else if(scores[key] === 'B'){
+            scores[key] = 3;
+        }else if(scores[key] === 'C+'){
+            scores[key] = 2.5;
+        }else if(scores[key] === 'C'){
+            scores[key] = 2;
+        }else if(scores[key] === 'D+'){
+            scores[key] = 1.5;
+        }else if(scores[key] === 'D'){
+            scores[key] = 1;
+        }else if(scores[key] === 'F'){
+            scores[key] = 0;
+        }    
+    });
+    console.log(scores);
+
+    requiredClasses.forEach(e => {
+        if(!scores[e]){
+            scores[e] = 0;
+        }
+    })
+
+    console.log(scores);
 
 
 }
 
-nationalPensionRemainingYearCount("35");
+
+
+getExamResult(scores, requiredClasses);
+
+
+const h1 = document.querySelector('.hello');
+const p = document.createElement('p');
+p.className = "dom";
+p.innerHTML = "DOM";
+h1.appendChild(p); 
+
+const thisIsPw = document.getElementById('password');
+const thisIsButton = document.getElementsByClassName('login-btn')[0];
+const alert = document.querySelector('.alert');
+
+
+const rePassword = document.querySelector("#re-password");
+rePassword.addEventListener("keyup", handleKeyup);
+
+function handleKeyup(){
+  if(thisIsPw.value !== rePassword.value){
+    alert.innerHTML = "비밀번호가 일치하지 않습니다";
+  }else{
+    alert.innerHTML = "";
+  }
+}
+
+
+
 </script>    
 </body>
 </html>
